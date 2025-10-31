@@ -72,7 +72,7 @@ WSGI_APPLICATION = 'tp3.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -80,7 +80,27 @@ DATABASES = {
     }
 }
 
+"""
+# settings.py
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # Changement : utilise le backend MySQL
+        'NAME': 'l3_info_2025_2026',  # Le nom de la base de données MySQL
+        'USER': 'root',  # Le nom d'utilisateur pour se connecter à MySQL
+        'PASSWORD': '',  # Le mot de passe de l'utilisateur
+        'HOST': 'localhost',  # L'hôte de la base de données (ex: 'localhost', '127.0.0.1', ou une IP/nom de serveur)
+        'PORT': '3306',  # Le port (par défaut 3306)
+
+        # Options recommandées pour MySQL et Django :
+        'OPTIONS': {
+            # Assure que le jeu de caractères est bien UTF-8, souvent nécessaire.
+            'charset': 'utf8mb4',
+            # Définit le mode de connexion, utile pour éviter des problèmes de troncature/strict SQL.
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
